@@ -1,0 +1,23 @@
+version: '2.3'
+
+services:
+  main:
+    container_name: FoodClassification
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    runtime: nvidia
+    restart: always
+    env_file:
+      - "docker-compose-env/main.env"
+    # volumes:
+    #   - "/ssd1/joy/:/hdd"
+    expose:
+      - "8000"
+    ports:
+      - "18000:22"
+      - "18001:6006"
+    ipc: host
+    stdin_open: true
+    tty: true
+
